@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.accesodatos.dto.student.StudentRequestDTO;
-import com.accesodatos.dto.student.StudentResponseDTO;
-import com.accesodatos.dto.student.StudentShortResponseDTO;
+import com.accesodatos.dto.customer.StudentRequestDTO;
+import com.accesodatos.dto.customer.StudentResponseDTO;
+import com.accesodatos.dto.customer.StudentShortResponseDTO;
 import com.accesodatos.entity.Course;
 import com.accesodatos.entity.Student;
 import com.accesodatos.exception.ResourceNotFoundException;

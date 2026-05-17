@@ -2,9 +2,9 @@ package com.accesodatos.mappers;
 
 import org.springframework.stereotype.Component;
 
-import com.accesodatos.dto.student.StudentRequestDTO;
-import com.accesodatos.dto.student.StudentResponseDTO;
-import com.accesodatos.dto.student.StudentShortResponseDTO;
+import com.accesodatos.dto.customer.StudentRequestDTO;
+import com.accesodatos.dto.customer.StudentResponseDTO;
+import com.accesodatos.dto.customer.StudentShortResponseDTO;
 import com.accesodatos.entity.Student;
 
 import lombok.AllArgsConstructor;
