@@ -1,0 +1,47 @@
+package com.accesodatos.service.impl;
+
+import com.accesodatos.entity.Role;
+import com.accesodatos.entity.UserEntity;
+import com.accesodatos.exception.ResourceNotFoundException;
+import com.accesodatos.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public Collection<GrantedAuthority> mapToAuthorities(Set<Role> roles) {
+        return roles.stream().map(role -> new SimpleGrantedAuthority("ROLE_".concat(role.getName())))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String usernam) throws UsernameNotFoundException {
+        UserEntity userEntity = userRepository.findUserEntityByUsername(usernam)
+                .orElseThrow(() -> new ResourceNotFoundException("not found"));
+
+        return new User(
+                userEntity.getUsername(),
+                userEntity.getPassword(),
+                userEntity.isEnabled(),
+                userEntity.isAccountNonExpired(),
+                userEntity.isAccountNonLocked(),
+                userEntity.isCredentialsNonExpired(),
+                mapToAuthorities(userEntity.getRoles())
+        );
+    }
+
+}

@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: "02.JPARepository"
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/springDB?serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: mysql
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: never  # always
+      data-locations: classpath:sql/data.sql
+
+security:
+  jwt:
+    key:
+      private: ElbkyHuoM9F9KyxXvwheCajA8VmcVFXCRDc7uj6dNP4
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html
+    default-models-expand-depth: -1
+    operations-sorter: method
+    tags-sorter: alpha
+    filter: true
+  api-docs:
+    enabled: true
+    path: /v3/doc
+
+# Server config
+server:
+  port: 8081
