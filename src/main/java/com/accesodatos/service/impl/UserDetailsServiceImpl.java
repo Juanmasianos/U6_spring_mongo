@@ -1,6 +1,5 @@
-package com.accesodatos.service.impl;
+/*package com.accesodatos.service.impl;
 
-import com.accesodatos.entity.Role;
 import com.accesodatos.entity.UserEntity;
 import com.accesodatos.exception.ResourceNotFoundException;
 import com.accesodatos.repository.UserRepository;
@@ -22,12 +21,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-
-    public Collection<GrantedAuthority> mapToAuthorities(Set<Role> roles) {
-        return roles.stream().map(role -> new SimpleGrantedAuthority("ROLE_".concat(role.getName())))
-                .collect(Collectors.toList());
-    }
-
     @Override
     public UserDetails loadUserByUsername(String usernam) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findUserEntityByUsername(usernam)
@@ -39,9 +32,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 userEntity.isEnabled(),
                 userEntity.isAccountNonExpired(),
                 userEntity.isAccountNonLocked(),
-                userEntity.isCredentialsNonExpired(),
-                mapToAuthorities(userEntity.getRoles())
+                userEntity.isCredentialsNonExpired()
         );
     }
 
 }
+*/

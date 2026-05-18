@@ -1,4 +1,4 @@
-package com.accesodatos.jwt;
+/*package com.accesodatos.jwt;
 
 import com.accesodatos.service.impl.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
@@ -17,13 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    /*
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
 
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
-    */
     private final JwtTokenProvider jwtTokenProvider;
 
     private final UserDetailsServiceImpl userDetailsService;
@@ -72,3 +66,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         return null;
     }
 }
+*/

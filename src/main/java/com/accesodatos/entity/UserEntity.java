@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,7 +18,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class UserEntity {
 
     @Id
-    private UUID id;
+    private String id;
 
     @Field
     private String username;

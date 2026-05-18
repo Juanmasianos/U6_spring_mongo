@@ -1,4 +1,4 @@
-package com.accesodatos.service.impl;
+/*package com.accesodatos.service.impl;
 
 import com.accesodatos.dto.auth.AuthLoginRequest;
 import com.accesodatos.dto.auth.AuthLoginResponse;
@@ -41,3 +41,4 @@ public class AuthService {
 
     }
 }
+*/

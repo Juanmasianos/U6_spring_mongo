@@ -15,7 +15,6 @@ public class AuthLoginResponse {
     private Set<String> roles;
     private String accessToken;
 
-    // private String tokenType = "Bearer ";
 
 
 

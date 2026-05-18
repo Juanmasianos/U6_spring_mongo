@@ -3,6 +3,7 @@ package com.accesodatos.service.impl;
 import com.accesodatos.dto.customer.CustomerRequestDto;
 import com.accesodatos.dto.customer.CustomerResponseDto;
 import com.accesodatos.entity.Customer;
+import com.accesodatos.mappers.CustomerMapper;
 import com.accesodatos.repository.CustomerRepository;
 import com.accesodatos.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private CustomerMapper customerMapper;
 
     @Override
     public CustomerResponseDto registerCustomer(CustomerRequestDto request) {
@@ -20,13 +23,9 @@ public class CustomerServiceImpl implements CustomerService {
             throw new IllegalArgumentException("El email ya está registrado");
         }
 
-        Customer newCustomer = Customer.builder()
-                .name(request.getName())
-                .email(request.getEmail())
-                .password(request.getPassword())
-                .build();
+        Customer newCustomer = customerMapper.toEntity(request);
         customerRepository.save(newCustomer);
-        return new CustomerResponseDto(newCustomer.getId(), newCustomer.getName(), newCustomer.getEmail());
+        return customerMapper.toResponseDto(newCustomer);
     }
 
 
@@ -35,6 +34,6 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        return new CustomerResponseDto(customer.getId(), customer.getName(), customer.getEmail());
+        return customerMapper.toResponseDto(customer);
     }
 }

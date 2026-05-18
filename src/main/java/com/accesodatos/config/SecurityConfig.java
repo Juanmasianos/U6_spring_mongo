@@ -37,19 +37,6 @@ import java.util.Collection;
 import java.util.List;
 
 
-/*
-* UserDetails: representa a un usuario de Spring Sec, es una interfaz.
-*
-* AuthenticationProvider: Permite acceder al usuario en la BD. Se puede sobreescribir esta clase para
-* implementar la seguridad de forma personalizada o proporcionandola como un Bean.
-* Tiene un metodo llamado authentication que sobreescribitemos.
-*
-* UserDetailService: que tiene un metodo denominado loadUserByUsername() que será implementado
-*
-*
-*
-*/
-
 @EnableWebSecurity(debug = true)
 @EnableMethodSecurity
 @Configuration
@@ -104,9 +91,6 @@ public class SecurityConfig {
 
     @Bean
     PasswordEncoder passwordEncoder() {
-
-        // Sin encriptacion
-        // return NoOpPasswordEncoder.getInstance();
 
         return new BCryptPasswordEncoder();
 
