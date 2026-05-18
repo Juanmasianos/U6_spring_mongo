@@ -3,13 +3,17 @@ package com.accesodatos.controller;
 import com.accesodatos.dto.auth.AuthLoginRequest;
 import com.accesodatos.dto.auth.AuthLoginResponse;
 import com.accesodatos.dto.auth.AuthRegisterRequest;
-import com.accesodatos.dto.auth.AuthRegisterResponse;
+import com.accesodatos.dto.customer.CustomerRequestDto;
+import com.accesodatos.dto.customer.CustomerResponseDto;
 import com.accesodatos.service.impl.AuthService;
+import com.accesodatos.service.CustomerService;
 import com.accesodatos.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/auth")
 @Tag(
         name = "Authentication",
         description = "Endpoints para la gestión de autenticación y registro de usuarios"
@@ -32,6 +36,9 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CustomerService customerService;
 
     @Operation(
             summary = "Inicio de sesión",
@@ -56,9 +63,21 @@ public class AuthController {
             @ApiResponse(responseCode = "201", description = "Usuario creado correctamente"),
     })
     @PostMapping("/register")
-    public ResponseEntity<AuthRegisterResponse> login(@RequestBody AuthRegisterRequest registerRequest) {
+    public ResponseEntity register(@RequestBody CustomerRequestDto registerRequest) {
 
-        return new ResponseEntity<>(userService.register(registerRequest), HttpStatus.CREATED);
+        try {
+            userService.register(new AuthRegisterRequest(
+                    registerRequest.getName(),
+                    registerRequest.getPassword(),
+                    Set.of("CUSTOMER")
+            ));
+            CustomerResponseDto newCustomer = customerService.registerCustomer(registerRequest);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(newCustomer);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(e);
+        }
 
     }
 
