@@ -1,4 +1,4 @@
-/*package com.accesodatos.jwt;
+package com.accesodatos.jwt;
 
 import com.accesodatos.service.impl.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
@@ -66,4 +66,3 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         return null;
     }
 }
-*/

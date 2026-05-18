@@ -26,5 +26,4 @@ public class Order {
     private String paymentMethod; 
     private LocalDateTime createdAt;
 
-
 }

@@ -1,4 +1,4 @@
-/*package com.accesodatos.controller;
+package com.accesodatos.controller;
 
 import com.accesodatos.dto.auth.AuthLoginRequest;
 import com.accesodatos.dto.auth.AuthLoginResponse;
@@ -63,4 +63,3 @@ public class AuthController {
     }
 
 }
-*/

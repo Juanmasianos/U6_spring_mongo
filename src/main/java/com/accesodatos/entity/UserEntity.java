@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,21 +22,18 @@ public class UserEntity {
     @Id
     private String id;
 
-    @Field
     private String username;
-    @Field
+    
     private String password;
 
-    @Field    
     private boolean isEnabled;
 
-    @Field
     private boolean accountNonExpired;
 
-    @Field
     private boolean accountNonLocked;
 
-    @Field
     private boolean credentialsNonExpired;
+
+    private Set<Role> roles = new HashSet<>();
 
 }

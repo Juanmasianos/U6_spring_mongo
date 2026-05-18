@@ -1,4 +1,4 @@
-/*package com.accesodatos.service.impl;
+package com.accesodatos.service.impl;
 
 import com.accesodatos.dto.auth.AuthRegisterRequest;
 import com.accesodatos.dto.auth.AuthRegisterResponse;
@@ -62,4 +62,3 @@ public class UserServiceImpl implements UserService {
 
     }
 }
-*/
