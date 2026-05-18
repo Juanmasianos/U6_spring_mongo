@@ -10,8 +10,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,12 +25,10 @@ public class Customer {
 
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "El formato del email no es válido")
-    @Indexed(unique = true) // Evita emails duplicados en la base de datos
+    @Indexed(unique = true) 
     private String email;
 
     @NotBlank(message = "La contraseña es obligatoria")
     private String password;
-
-    private List<String> roles;
 
 }

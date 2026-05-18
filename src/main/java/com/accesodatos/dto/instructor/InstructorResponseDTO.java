@@ -3,8 +3,8 @@ package com.accesodatos.dto.instructor;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.accesodatos.dto.course.CourseResponseDTO;
 import com.accesodatos.dto.instructordetail.InstructorDetailResponseDTO;
+import com.accesodatos.dto.product.CourseResponseDTO;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

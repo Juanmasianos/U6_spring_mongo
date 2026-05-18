@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accesodatos.dto.course.CourseRequestDTO;
-import com.accesodatos.dto.course.CourseResponseDTO;
+import com.accesodatos.dto.product.CourseRequestDTO;
+import com.accesodatos.dto.product.CourseResponseDTO;
 import com.accesodatos.service.CourseService;
 
 import jakarta.validation.Valid;

@@ -1,6 +1,5 @@
 package com.accesodatos.dto.customer;
 
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
