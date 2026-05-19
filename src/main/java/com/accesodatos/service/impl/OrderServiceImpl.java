@@ -2,6 +2,8 @@ package com.accesodatos.service.impl;
 
 import com.accesodatos.dto.order.OrderRequestDto;
 import com.accesodatos.dto.order.OrderResponseDto;
+import com.accesodatos.entity.CartItemVersionOne;
+import com.accesodatos.entity.CartItemVersionTwo;
 import com.accesodatos.entity.CartVersionOne;
 import com.accesodatos.entity.CartVersionTwo;
 import com.accesodatos.entity.Order;
@@ -55,7 +57,7 @@ public class OrderServiceImpl implements OrderService {
         Double totalAmount = 0.0;
 
         
-        for (var cartItem : cart.getCartItems()) {
+        for (CartItemVersionOne cartItem : cart.getCartItems()) {
             Product product = productRepository.findById(cartItem.getProductId())
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado: " + cartItem.getName()));
 
@@ -68,7 +70,7 @@ public class OrderServiceImpl implements OrderService {
         }
 
         
-        for (var cartItem : cart.getCartItems()) {
+        for (CartItemVersionOne cartItem : cart.getCartItems()) {
             Product product = productRepository.findById(cartItem.getProductId()).get();
             product.setStock(product.getStock() - cartItem.getQuantity());
             productRepository.save(product);
@@ -102,7 +104,7 @@ public class OrderServiceImpl implements OrderService {
         List<OrderItem> orderItems = new ArrayList<>();
         Double totalAmount = 0.0;
 
-        for (var cartItem : cart.getCartItems()) {
+        for (CartItemVersionTwo cartItem : cart.getCartItems()) {
             Product product = productRepository.findById(cartItem.getProductId())
                     .orElseThrow(() -> new RuntimeException("El producto ya no existe en la tienda"));
 
@@ -114,7 +116,7 @@ public class OrderServiceImpl implements OrderService {
             orderItems.add(new OrderItem(product.getId(), product.getName(), product.getPrice(), cartItem.getQuantity()));
         }
 
-        for (var cartItem : cart.getCartItems()) {
+        for (CartItemVersionTwo cartItem : cart.getCartItems()) {
             Product product = productRepository.findById(cartItem.getProductId()).get();
             product.setStock(product.getStock() - cartItem.getQuantity());
             productRepository.save(product);
