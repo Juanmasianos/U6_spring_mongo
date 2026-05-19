@@ -20,7 +20,7 @@ public class OrderController {
     @Autowired private OrderService orderService;
 
     @PostMapping("/v1/checkout")
-    public ResponseEntity<?> checkoutV1(@RequestParam String customerId, @Valid @RequestBody OrderRequestDto request) {
+    public ResponseEntity<?> checkoutVersionOne(@RequestParam String customerId, @Valid @RequestBody OrderRequestDto request) {
         try {
             OrderResponseDto response = orderService.checkoutOne(customerId, request);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -32,7 +32,7 @@ public class OrderController {
     }
 
     @PostMapping("/v2/checkout")
-    public ResponseEntity<?> checkoutV2(@RequestParam String customerId, @Valid @RequestBody OrderRequestDto request) {
+    public ResponseEntity<?> checkoutVersionTwo(@RequestParam String customerId, @Valid @RequestBody OrderRequestDto request) {
         try {
             OrderResponseDto response = orderService.checkoutTwo(customerId, request);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
