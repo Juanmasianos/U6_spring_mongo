@@ -13,8 +13,10 @@ import com.accesodatos.service.CartServiceOne;
 @Service
 public class CartServiceOneImpl implements CartServiceOne {
 
-    @Autowired private CartRepositoryOne cartRepository;
-    @Autowired private ProductRepository productRepository;
+    @Autowired 
+    private CartRepositoryOne cartRepository;
+    @Autowired 
+    private ProductRepository productRepository;
 
     public CartVersionOne getOrCreateCart(String customerId) {
         return cartRepository.findByCustomerId(customerId)
