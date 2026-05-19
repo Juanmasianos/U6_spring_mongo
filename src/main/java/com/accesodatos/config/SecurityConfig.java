@@ -40,7 +40,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/auth/login", "/auth/register").permitAll()
                         .requestMatchers("/ping", "/auth/**", "/doc/**", "/v3/doc/**").permitAll()
                         .requestMatchers("/products/**").authenticated()
-                        .requestMatchers("/api/v1/cart/**", "/api/v2/cart/**").authenticated()
+                        .requestMatchers("/v1/cart/**", "/v2/cart/**").authenticated()
                         .requestMatchers("/order/**").authenticated()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> {

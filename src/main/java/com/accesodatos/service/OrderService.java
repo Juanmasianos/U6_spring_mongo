@@ -9,7 +9,7 @@ public interface OrderService {
 
     public List<OrderResponseDto> getOrdersByCustomer(String customerId);
     
-    public OrderResponseDto checkoutV1(String customerId, OrderRequestDto request);
+    public OrderResponseDto checkoutOne(String customerId, OrderRequestDto request);
     
-    public OrderResponseDto checkoutV2(String customerId, OrderRequestDto request);
+    public OrderResponseDto checkoutTwo(String customerId, OrderRequestDto request);
 }

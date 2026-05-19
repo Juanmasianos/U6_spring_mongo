@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     
-    public OrderResponseDto checkoutV1(String customerId, OrderRequestDto request) {
+    public OrderResponseDto checkoutOne(String customerId, OrderRequestDto request) {
         CartVersionOne cart = cartRepositoryOne.findByCustomerId(customerId)
                 .orElseThrow(() -> new RuntimeException("Carrito v1 no encontrado"));
 
@@ -91,7 +91,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     
-    public OrderResponseDto checkoutV2(String customerId, OrderRequestDto request) {
+    public OrderResponseDto checkoutTwo(String customerId, OrderRequestDto request) {
         CartVersionTwo cart = cartRepositoryTwo.findByCustomerId(customerId)
                 .orElseThrow(() -> new RuntimeException("Carrito v2 no encontrado"));
 

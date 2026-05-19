@@ -8,7 +8,7 @@ import com.accesodatos.entity.CartVersionOne;
 import com.accesodatos.service.CartServiceOne;
 
 @RestController
-@RequestMapping("/api/v1/cart")
+@RequestMapping("/v1/cart")
 public class CartVersionOneController {
 
     @Autowired private CartServiceOne cartService;
