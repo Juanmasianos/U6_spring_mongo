@@ -66,11 +66,7 @@ public class AuthController {
     public ResponseEntity register(@RequestBody CustomerRequestDto registerRequest) {
 
         try {
-            userService.register(new AuthRegisterRequest(
-                    registerRequest.getName(),
-                    registerRequest.getPassword(),
-                    Set.of("CUSTOMER")
-            ));
+            userService.register(registerRequest);
             CustomerResponseDto newCustomer = customerService.registerCustomer(registerRequest);
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(newCustomer);

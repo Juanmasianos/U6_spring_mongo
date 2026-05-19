@@ -11,11 +11,10 @@ import java.util.Set;
 @NoArgsConstructor
 public class AuthLoginResponse {
 
-    private String username;
+    private String id;
+    private String name;
+    private String email;
     private Set<String> roles;
     private String accessToken;
-
-
-
 
 }

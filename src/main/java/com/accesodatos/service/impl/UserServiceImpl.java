@@ -2,6 +2,7 @@ package com.accesodatos.service.impl;
 
 import com.accesodatos.dto.auth.AuthRegisterRequest;
 import com.accesodatos.dto.auth.AuthRegisterResponse;
+import com.accesodatos.dto.customer.CustomerRequestDto;
 import com.accesodatos.entity.Role;
 import com.accesodatos.entity.UserEntity;
 import com.accesodatos.repository.RoleRepository;
@@ -24,7 +25,13 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
 
-    public AuthRegisterResponse register(AuthRegisterRequest authRegisterRequest) {
+    public AuthRegisterResponse register(CustomerRequestDto customerRequest) {
+
+        AuthRegisterRequest authRegisterRequest = new AuthRegisterRequest().builder()
+                                                                        .username(customerRequest.getEmail())
+                                                                        .password(customerRequest.getPassword())
+                                                                        .roles(Set.of("CUSTOMER"))
+                                                                        .build();
 
         UserEntity userEntity = UserEntity.builder()
                 .username(authRegisterRequest.getUsername())
