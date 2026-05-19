@@ -1,8 +1,7 @@
-# Desarrollo e Implementación del Proyecto
+# Desarrollo e Implementación los modelos del carrito
 
-Para poder comparar ambos modelos en igualdad de condiciones, estructuramos el código de la siguiente manera:
-
-1. **Separación de rutas y colecciones:** Creamos controladores específicos "/v1/cart" y "/v2/cart" que delegan a servicios distintos. En la MongoDB, esto se almacena en dos colecciones separadas: "cartsOne" y "cartsTwo".
+## Separación de rutas y colecciones:
+Creé los controllers "/v1/cart" y "/v2/cart" que delegan a servicios distintos. En la MongoDB, esto se almacena en dos colecciones separadas: "cartsOne" y "cartsTwo".
 
 ## V1 Documentos Embebidos 
    Al añadir un producto en la V1, el backend busca el producto en la base de datos y clona sus datos dentro del propio array del carrito. Al hacer el checkout, se ahorra el buscar  para saber el importe total..

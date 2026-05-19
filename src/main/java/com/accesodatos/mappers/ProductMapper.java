@@ -11,26 +11,27 @@ import lombok.RequiredArgsConstructor;
 @Component
 public class ProductMapper {
 	
-	public ProductResponseDto toResponseDto(Product Product) {
+	public ProductResponseDto toResponseDto(Product product) {
 		
 		ProductResponseDto dto = new ProductResponseDto();
 		
-		dto.setName(Product.getName());
-		dto.setDescription(Product.getDescription());
-		dto.setPrice(Product.getPrice());
-		dto.setStock(Product.getStock());
+		dto.setId(product.getId());
+		dto.setName(product.getName());
+		dto.setDescription(product.getDescription());
+		dto.setPrice(product.getPrice());
+		dto.setStock(product.getStock());
 
 		return dto;
 	}
 	
-	public ProductResponseDto toShortResponseDto(Product Product) {
+	public ProductResponseDto toShortResponseDto(Product product) {
 		
 		ProductResponseDto dto = new ProductResponseDto();
 		
-		dto.setName(Product.getName());
-		dto.setDescription(Product.getDescription());
-		dto.setPrice(Product.getPrice());
-		dto.setStock(Product.getStock());
+		dto.setName(product.getName());
+		dto.setDescription(product.getDescription());
+		dto.setPrice(product.getPrice());
+		dto.setStock(product.getStock());
 
 		return dto;
 	}
